@@ -6,6 +6,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const ejs = require('ejs')
 const bodyParser = require('body-parser')
+const { errorHandler, notFound }=require('./src/middleware/errorMiddleware')
 
 
 app.set('view engine', 'ejs')
@@ -16,14 +17,18 @@ app.use(express.json())
 
 
 //this is function call to connect mongodb and its code is present in src/config/db.js
-connectDB();
+connectDB()
 
 //this is for all routes and its code is in src/routes/userRoutes.js
-app.use('/', userRoutes);
+app.use('/', userRoutes)
 
-const port = process.env.PORT || 3000;
+
+app.use(errorHandler)
+app.use(notFound)
+
+const port = process.env.PORT || 3000
 
 //connecting server
 app.listen(port, function () {
-  console.log('Server Started');
-});
+  console.log('Server Started')
+})

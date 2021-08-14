@@ -3,6 +3,7 @@ const generateToken = require('../utils/generateToken.js')
 const User = require('../models/userModel')
 
 const registerUser = asyncHandler(async (req, res) => {
+
   const { name, email, password } = req.body
 
   const userExists = await User.findOne({ email })
@@ -20,7 +21,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     const token = generateToken(user._id)
-    res.status(201).json("User has been Successfully Created")
+    res.status(201).json('User created successfully and stored in database !')
   } else {
     res.status(400)
     throw new Error('Invalid user data')
@@ -28,6 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 const authUser = asyncHandler(async (req, res) => {
+  
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
