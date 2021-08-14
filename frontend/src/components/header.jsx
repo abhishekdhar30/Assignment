@@ -7,30 +7,33 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const Header = () => {
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
-          <LinkContainer to='/'>
+          <LinkContainer to="/">
             <Navbar.Brand>Etark</Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="justify-content-end"
+          >
             <Route />
-            <Nav className='mx-auto'>
-              <LinkContainer to='/login'>
+            <Nav className="mr-auto">
+              <LinkContainer to="/login">
                 <Nav.Link>
-                  <i className='fas fa-user'></i> Sign In
+                  <i className="fas fa-user"></i> Sign In
                 </Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to='/signup'>
+              <LinkContainer to="/signup">
                 <Nav.Link>
-                  <i className='fas fa-user'></i> Sign Up
+                  <i className="fas fa-user"></i> Sign Up
                 </Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to='/home'>
+              <LinkContainer to="/home">
                 <Nav.Link>
-                  <i className='fas fa-user'></i> Home
+                  <i className="fas fa-user"></i> Home
                 </Nav.Link>
               </LinkContainer>
             </Nav>
@@ -38,7 +41,7 @@ const Header = () => {
         </Container>
       </Navbar>
     </header>
-  )
+  );
 }
 
 export default Header

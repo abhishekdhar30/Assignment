@@ -33,7 +33,7 @@ const LoginView = () => {
         setSuccess(true)
       })
       .catch((error) => {
-        setError('Invalid email or password')
+        setError(error.response.data.message);
         setSuccess(false)
       })
   }

@@ -15,16 +15,19 @@ const RegisterView = () => {
   const submitHandler = async (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
+      successMessage(null)
       setMessage('Passwords do not match')
     } else {
       await axios
         .post('/signup', { name: name, email: email, password: password })
         .then((data) => {
           console.log(data)
+           setMessage(null);
            successMessage(data.data)
         })
         .catch((error) => {
-          setMessage('error')
+           successMessage(null);
+          setMessage(error.response.data.message);
         })
     }
   }
